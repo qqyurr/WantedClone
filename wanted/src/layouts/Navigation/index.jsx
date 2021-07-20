@@ -11,15 +11,16 @@ import {
   UserListItem,
   UserBtn,
   UserBtn2,
+  Line,
 } from "./styles.jsx";
 import Find from "../../components/Find/index";
 import { useMediaQuery } from "react-responsive";
+import { BsSearch, BsBell } from "react-icons/bs";
+import { IoPersonCircle } from "react-icons/io5";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 function Navigation() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  // const toggleDropdown = () => {
-  //   setDropdownVisible(!dropdownVisible);
-  // };
   const Desktop = ({ children }) => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
@@ -28,12 +29,9 @@ function Navigation() {
     const isMobile = useMediaQuery({ maxWidth: 992 });
     return isMobile ? children : null;
   };
-  const Default = ({ children }) => {
-    const isNotMobile = useMediaQuery({ minWidth: 768 });
-    return isNotMobile ? children : null;
-  };
   return (
     <div>
+      {/* desktop */}
       <Desktop>
         <Back>
           <MenuBack>
@@ -73,13 +71,22 @@ function Navigation() {
               </Menus>
               <UserList>
                 <UserListItem>
-                  <UserBtn>돋보기</UserBtn>
+                  <UserBtn>
+                    <BsSearch />
+                  </UserBtn>
                 </UserListItem>
                 <UserListItem>
-                  <UserBtn>알람</UserBtn>
+                  <UserBtn>
+                    <BsBell />
+                  </UserBtn>
                 </UserListItem>
                 <UserListItem>
-                  <UserBtn>프로필</UserBtn>
+                  <UserBtn>
+                    <IoPersonCircle fontSize="25px" color="grey" />
+                  </UserBtn>
+                </UserListItem>
+                <UserListItem>
+                  <Line>|</Line>
                 </UserListItem>
                 <UserListItem>
                   <UserBtn2>기업 서비스</UserBtn2>
@@ -89,6 +96,7 @@ function Navigation() {
           </MenuBack>
         </Back>
       </Desktop>
+      {/* mobile */}
       <Mobile>
         <Back>
           <MenuBack>
@@ -106,20 +114,25 @@ function Navigation() {
               </Menus>
               <UserList>
                 <UserListItem>
-                  <UserBtn>돋보기</UserBtn>
+                  <UserBtn>
+                    <BsSearch />
+                  </UserBtn>
                 </UserListItem>
                 <UserListItem>
-                  <UserBtn>알람</UserBtn>
+                  <UserBtn>
+                    <BsBell />
+                  </UserBtn>
                 </UserListItem>
                 <UserListItem>
-                  <UserBtn>햄버거</UserBtn>
+                  <UserBtn>
+                    <GiHamburgerMenu />
+                  </UserBtn>
                 </UserListItem>
               </UserList>
             </NavigationBack>
           </MenuBack>
         </Back>
       </Mobile>
-      {/* <Default>Not mobile (desktop or laptop or tablet)</Default> */}
     </div>
   );
 }

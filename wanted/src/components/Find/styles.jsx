@@ -1,18 +1,16 @@
 import styled from "@emotion/styled";
 
 export const FindBack = styled.div`
-  top: 50px;
+  top: 60px;
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  height: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
+  width: 100%;
+  background-color: green;
   display: block;
   line-height: 1rem;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 `;
 
 export const FindBackLayout = styled.div`
@@ -62,6 +60,7 @@ export const RightContent = styled.div`
   display: block;
   font-size: 0.8rem;
   line-height: 1rem;
+  transition: 0.3s ease-in-out;
 `;
 
 export const ContentLink = styled.a`
@@ -70,4 +69,8 @@ export const ContentLink = styled.a`
   text-align: left;
   font-size: 0.8rem;
   line-height: 1rem;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 `;
