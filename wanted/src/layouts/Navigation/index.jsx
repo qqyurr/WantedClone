@@ -13,14 +13,46 @@ import {
   UserBtn2,
   Line,
 } from "./styles.jsx";
-import Find from "../../components/Find/index";
 import { useMediaQuery } from "react-responsive";
 import { BsSearch, BsBell } from "react-icons/bs";
 import { IoPersonCircle } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+import Dropdown from "../../components/Dropdown/index.jsx";
+import MobileModal from "../../components/MobileModal/index.jsx";
+
+export const NAV = [
+  {
+    title: "탐색",
+  },
+  {
+    title: "커리어 성장",
+  },
+  {
+    title: "직군별 연봉",
+  },
+  {
+    title: "이력서",
+  },
+  {
+    title: "매치업",
+  },
+  {
+    title: "프리랜서",
+  },
+  {
+    title: "Ai 합격예측",
+  },
+];
 
 function Navigation() {
-  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
+  const openModal = () => {
+    setIsMobileModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsMobileModalOpen(false);
+  };
   const Desktop = ({ children }) => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
@@ -29,6 +61,7 @@ function Navigation() {
     const isMobile = useMediaQuery({ maxWidth: 992 });
     return isMobile ? children : null;
   };
+
   return (
     <div>
       {/* desktop */}
@@ -41,34 +74,19 @@ function Navigation() {
                 alt="wanted"
               />
               <Menus>
-                <MenuItem>
-                  <Item
-                    onMouseEnter={() => setDropdownVisible(true)}
-                    onMouseLeave={() => setDropdownVisible(false)}
+                {NAV.map(item => (
+                  <MenuItem
+                    key={item.title}
+                    title={item.title}
+                    onMouseEnter={() =>
+                      item.title === "탐색" ? setIsOpen(true) : setIsOpen(false)
+                    }
                   >
-                    탐색
-                  </Item>
-                  {dropdownVisible && <Find></Find>}
-                </MenuItem>
-                <MenuItem>
-                  <Item>커리어 성장</Item>
-                </MenuItem>
-                <MenuItem>
-                  <Item>직군별 연봉</Item>
-                </MenuItem>
-                <MenuItem>
-                  <Item>이력서</Item>
-                </MenuItem>
-                <MenuItem>
-                  <Item>매치업</Item>
-                </MenuItem>
-                <MenuItem>
-                  <Item>프리랜서</Item>
-                </MenuItem>
-                <MenuItem>
-                  <Item>Ai 합격예측</Item>
-                </MenuItem>
+                    <Item>{item.title}</Item>
+                  </MenuItem>
+                ))}
               </Menus>
+              <Dropdown isOpen={isOpen} onMouseLeave={() => setIsOpen(false)} />
               <UserList>
                 <UserListItem>
                   <UserBtn>
@@ -124,11 +142,12 @@ function Navigation() {
                   </UserBtn>
                 </UserListItem>
                 <UserListItem>
-                  <UserBtn>
+                  <UserBtn onClick={openModal}>
                     <GiHamburgerMenu />
                   </UserBtn>
                 </UserListItem>
               </UserList>
+              <MobileModal open={isMobileModalOpen} close={closeModal} />
             </NavigationBack>
           </MenuBack>
         </Back>
