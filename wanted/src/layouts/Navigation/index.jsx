@@ -13,14 +13,52 @@ import {
   UserBtn2,
   Line,
 } from "./styles.jsx";
-import Find from "../../components/Find/index";
 import { useMediaQuery } from "react-responsive";
 import { BsSearch, BsBell } from "react-icons/bs";
 import { IoPersonCircle } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+<<<<<<< HEAD
 
 function Navigation() {
   const [dropdownVisible, setDropdownVisible] = useState(false);
+=======
+import Dropdown from "../../components/Dropdown/index.jsx";
+import MobileModal from "../../components/MobileModal/index.jsx";
+
+export const NAV = [
+  {
+    title: "탐색",
+  },
+  {
+    title: "커리어 성장",
+  },
+  {
+    title: "직군별 연봉",
+  },
+  {
+    title: "이력서",
+  },
+  {
+    title: "매치업",
+  },
+  {
+    title: "프리랜서",
+  },
+  {
+    title: "Ai 합격예측",
+  },
+];
+
+function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileModalOpen, setIsMobileModalOpen] = useState(false);
+  const openModal = () => {
+    setIsMobileModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsMobileModalOpen(false);
+  };
+>>>>>>> 3709b66e5dfab945bf50f61ebb7f8c9f3df3aa70
   const Desktop = ({ children }) => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
     return isDesktop ? children : null;
@@ -29,6 +67,10 @@ function Navigation() {
     const isMobile = useMediaQuery({ maxWidth: 992 });
     return isMobile ? children : null;
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3709b66e5dfab945bf50f61ebb7f8c9f3df3aa70
   return (
     <div>
       {/* desktop */}
@@ -41,11 +83,15 @@ function Navigation() {
                 alt="wanted"
               />
               <Menus>
-                <MenuItem>
-                  <Item
-                    onMouseEnter={() => setDropdownVisible(true)}
-                    onMouseLeave={() => setDropdownVisible(false)}
+                {NAV.map(item => (
+                  <MenuItem
+                    key={item.title}
+                    title={item.title}
+                    onMouseEnter={() =>
+                      item.title === "탐색" ? setIsOpen(true) : setIsOpen(false)
+                    }
                   >
+<<<<<<< HEAD
                     탐색
                   </Item>
                   {dropdownVisible && (
@@ -70,7 +116,13 @@ function Navigation() {
                 <MenuItem>
                   <Item>Ai 합격예측</Item>
                 </MenuItem>
+=======
+                    <Item>{item.title}</Item>
+                  </MenuItem>
+                ))}
+>>>>>>> 3709b66e5dfab945bf50f61ebb7f8c9f3df3aa70
               </Menus>
+              <Dropdown isOpen={isOpen} onMouseLeave={() => setIsOpen(false)} />
               <UserList>
                 <UserListItem>
                   <UserBtn>
@@ -126,11 +178,16 @@ function Navigation() {
                   </UserBtn>
                 </UserListItem>
                 <UserListItem>
+<<<<<<< HEAD
                   <UserBtn>
+=======
+                  <UserBtn onClick={openModal}>
+>>>>>>> 3709b66e5dfab945bf50f61ebb7f8c9f3df3aa70
                     <GiHamburgerMenu />
                   </UserBtn>
                 </UserListItem>
               </UserList>
+              <MobileModal open={isMobileModalOpen} close={closeModal} />
             </NavigationBack>
           </MenuBack>
         </Back>

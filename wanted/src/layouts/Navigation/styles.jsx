@@ -31,7 +31,6 @@ export const NavigationBack = styled.nav`
 export const HomeLogo = styled.img`
   display: block;
   cursor: pointer;
-  box-sizing: border-box;
   padding-right: initial;
   width: 5em;
   padding-bottom: 0.4em;
@@ -73,7 +72,6 @@ export const User = styled.aside`
   padding: 0;
   height: 100%;
   display: block;
-  margin: 0;
   border: 0;
   font-size: 0.8rem;
 `;
@@ -84,10 +82,13 @@ export const UserList = styled.ul`
   list-style: none;
   border: 0;
   flex-direction: row;
+<<<<<<< HEAD
   // margin-block-start: 1em;
   // margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+=======
+>>>>>>> 3709b66e5dfab945bf50f61ebb7f8c9f3df3aa70
 `;
 
 export const UserListItem = styled.li`
@@ -95,8 +96,11 @@ export const UserListItem = styled.li`
   display: inline-block;
   height: 100%;
   vertical-align: middle;
+<<<<<<< HEAD
   margin: 0;
   border: 0;
+=======
+>>>>>>> 3709b66e5dfab945bf50f61ebb7f8c9f3df3aa70
 `;
 
 export const UserBtn = styled.button`
@@ -105,7 +109,10 @@ export const UserBtn = styled.button`
   padding: 0 10px;
   font-size: 1em;
   font-weight: 600;
+<<<<<<< HEAD
   margin: 0;
+=======
+>>>>>>> 3709b66e5dfab945bf50f61ebb7f8c9f3df3aa70
   border: 0;
   background: none;
   cursor: pointer;
