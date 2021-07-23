@@ -1,29 +1,23 @@
 import styled from "@emotion/styled";
 
-export const FindBack = styled.div`
+export const Container = styled.div`
+  display: ${({ DropdownOpen }) => (DropdownOpen ? "flex" : "none")}
+  position: absolute;
   top: 50px;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.4);
-  height: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  display: block;
-  line-height: 1rem;
+  width: 100%
+`;
+
+export const FindBack = styled.div`
+  width: 100%
+  background-color: #fff;
+  paddin: 3rem;
 `;
 
 export const FindBackLayout = styled.div`
   position: relative;
   height: 0%;
   max-height: 625px;
-  background-color: #fff;
-  transition-property: all;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
+  background-color: blue;
   display: block;
   line-height: 1rem;
 `;
@@ -62,6 +56,8 @@ export const RightContent = styled.div`
   display: block;
   font-size: 0.8rem;
   line-height: 1rem;
+  transition: width 2s, height 2s, background-color 2s, transform 2s;
+  background-color: green;
 `;
 
 export const ContentLink = styled.a`
